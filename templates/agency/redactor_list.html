@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if redactor_list %}
+
+  <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+      </tr>
+
+  {% for redactor in redactor_list %}
+        <tr>
+          <td>
+              {{ redactor.id }}
+          </td>
+          <td>
+              {{ redactor.username }}
+          </td>
+
+        </tr>
+      {% endfor %}
+{% endif %}
+  </table>
+{% endblock %}
