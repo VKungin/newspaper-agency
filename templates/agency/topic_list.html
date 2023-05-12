@@ -1,39 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if topic_list %}
 
-  <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
+  <section class="pt-3 pb-4" id="count-stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
+          <div class="row">
+            <div class="col-md-12 position-relative">
+              <div class="p-3 text-center">
 
-  {% for topic in topic_list %}
-        <tr>
-          <td>
-              {{ topic.id }}
-          </td>
-          <td>
-              {{ topic.name }}
-          </td>
-          <td>
-              <a href="#">
-                Update
-              </a>
-            </td>
-            <td>
-              <a style="color: red"
-                href="#">
-                Delete
-              </a>
-            </td>
-        </tr>
-      {% endfor %}
-{% endif %}
-  </table>
+                <table class="table">
+                    <tr class="text-dark">
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Update</th>
+                      <th>Delete</th>
+                    </tr>
+
+                    {% for topic in topic_list %}
+                          <tr class="text-center">
+                            <td><a href="#">{{ topic.id }}</a></td>
+                            <td><a href="#">{{ topic.name }}</a></td>
+                            <td><a href="#">Update</a></td>
+                            <td><a href="#">Delete</a></td>
+                          </tr>
+                    {% endfor %}
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}
 

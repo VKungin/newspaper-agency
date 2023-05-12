@@ -1,25 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if redactor_list %}
 
-  <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-      </tr>
+  <section class="pt-3 pb-4" id="count-stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
+          <div class="row">
+            <div class="col-md-12 position-relative">
+              <div class="p-3 text-center">
 
-  {% for redactor in redactor_list %}
-        <tr>
-          <td>
-              {{ redactor.id }}
-          </td>
-          <td>
-              {{ redactor.username }}
-          </td>
+                <table class="table">
+                    <tr class="text-dark">
+                      <th>ID</th>
+                      <th>Username</th>
+                      <th>First name</th>
+                      <th>Last name</th>
+                      <th>Detail</th>
+                    </tr>
 
-        </tr>
-      {% endfor %}
-{% endif %}
-  </table>
+                    {% for redactor in redactor_list %}
+                          <tr class="text-center">
+                            <td><a href="{% url 'agency:redactors-detail' pk=redactor.id %}">{{ redactor.id }}</a></td>
+                            <td><a href="{% url 'agency:redactors-detail' pk=redactor.id %}">{{ redactor.username }}</a></td>
+                            <td><a href="{% url 'agency:redactors-detail' pk=redactor.id %}">{{ redactor.first_name }}</a></td>
+                            <td><a href="{% url 'agency:redactors-detail' pk=redactor.id %}">{{ redactor.last_name }}</a></td>
+                            <td><a href="{% url 'agency:redactors-detail' pk=redactor.id %}">Read more</a></td>
+                          </tr>
+                    {% endfor %}
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}

@@ -71,12 +71,16 @@
 
   {% endblock content %}
 
+  {% block pagination %}
+    {% include 'includes/pagination.html' %}
+  {% endblock %}
+
   {% block footer %}
 
     {% include 'includes/footer.html' %}
 
   {% endblock footer %}
-
+  </header>
 </body>
 
 </html>
