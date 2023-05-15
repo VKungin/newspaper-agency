@@ -36,9 +36,26 @@ class TopicListView(generic.ListView):
         return context
 
 
+class TopicDetailView(generic.DetailView):
+    model = Topic
+    template_name = "agency/topic_detail.html"
+
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = context.get("topic")
+        context["large_welcome_text"] = name
+        return context
+
+
 class TopicCreateView(generic.CreateView):
     model = Topic
     fields = "__all__"
+    success_url = reverse_lazy("agency:topics-list")
+
+
+class TopicDeleteView(generic.DeleteView):
+    model = Topic
     success_url = reverse_lazy("agency:topics-list")
 
 
@@ -78,9 +95,6 @@ class NewspaperListView(generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        news_list = Newspaper.objects.all()
-
-        context["news_list"] = news_list
         context["large_welcome_text"] = "News list"
         context["small_welcome_text"] = "It displays the number news"
 

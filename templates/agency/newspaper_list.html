@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% if news_list %}
+  {% if newspaper_list %}
 
       <section class="pt-3 pb-4" id="count-stats">
   <div class="container">
@@ -18,7 +18,7 @@
                     <th>Read detail</th>
                   </tr>
 
-                  {% for news in news_list %}
+                  {% for news in newspaper_list %}
                         <tr class="text-center">
                           <td>
                             <a href="{% url 'agency:news-detail' pk=news.id %}">{{ news.id }}</a>

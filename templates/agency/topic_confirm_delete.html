@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="col-lg-5 z-index-2 border-radius-xl mt-n12  mx-auto py-2 blur shadow-blur mb-8">
+      <div class="col-md-15 position-relative">
+        <h1 class="text-center">Delete topic: {{ topic.name }}?</h1>
+        <form action="" method="post">
+        {% csrf_token %}
+        <div class="text-center">
+          <input type="submit" value="Yes" class="btn btn-danger">
+        </div>
+        </form>
+      </div>
+  </div>
+{% endblock %}
