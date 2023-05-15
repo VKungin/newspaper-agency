@@ -1,7 +1,9 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render
 
+from agency.forms import RedactorCreateForm
 from agency.models import Topic, Newspaper, Redactor
 
 
@@ -64,6 +66,11 @@ class RedactorDetailView(generic.DetailView):
         return context
 
 
+class RedactorCreateView(generic.CreateView):
+    model = Redactor
+    form_class = RedactorCreateForm
+
+
 class NewspaperListView(generic.ListView):
     model = Newspaper
     template_name = "agency/newspaper_list.html"
@@ -88,5 +95,11 @@ class NewspaperDetailView(generic.DetailView):
         title = context.get("newspaper")
         context["large_welcome_text"] = title
         return context
+
+
+class NewspaperCreateView(generic.CreateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("agency:news-list")
 
 

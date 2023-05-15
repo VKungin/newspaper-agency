@@ -6,15 +6,15 @@
     <div class="container py-4">
       <div class="row">
       <div class="col-lg-5 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
-          <h3 class="text-center">Create topic</h3>
+          <h3 class="text-center">Create News</h3>
           <form role="form" id="contact-form" method="post" novalidate autocomplete="off">
             {% csrf_token %}
             <div class="card-body d-flex justify-content-center align-items-center flex-column">
               <div class="mb-4">
-                <div class="card-body form-control mb-4"> {{ form.as_div }} </div>
+                <div class="card-body form-control mb-4 "> {{ form.as_div }} </div>
 
                 <div class="input-group">
-                  <input type="submit" class="btn bg-gradient-dark w-100" placeholder="" value="save topic" >
+                  <input type="submit" class="btn bg-gradient-dark w-100" placeholder="" value="save new" >
                 </div>
               </div>
               <div class="row">
