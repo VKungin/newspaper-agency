@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render
 
@@ -5,7 +6,6 @@ from agency.models import Topic, Newspaper, Redactor
 
 
 def index(request):
-
     num_topics = Topic.objects.count()
     num_news = Newspaper.objects.count()
     num_redactors = Redactor.objects.count()
@@ -24,8 +24,7 @@ def index(request):
 class TopicListView(generic.ListView):
     model = Topic
     template_name = "agency/topic_list.html"
-    paginate_by = 3
-
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,6 +32,12 @@ class TopicListView(generic.ListView):
         context["small_welcome_text"] = "It displays the number topics"
 
         return context
+
+
+class TopicCreateView(generic.CreateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("agency:topics-list")
 
 
 class RedactorListView(generic.ListView):
@@ -73,7 +78,6 @@ class NewspaperListView(generic.ListView):
         context["small_welcome_text"] = "It displays the number news"
 
         return context
-
 
 
 class NewspaperDetailView(generic.DetailView):
