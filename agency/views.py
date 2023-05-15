@@ -88,6 +88,11 @@ class RedactorCreateView(generic.CreateView):
     form_class = RedactorCreateForm
 
 
+class RedactorDeleteView(generic.DeleteView):
+    model = Redactor
+    success_url = reverse_lazy("agency:redactors-list")
+
+
 class NewspaperListView(generic.ListView):
     model = Newspaper
     template_name = "agency/newspaper_list.html"
@@ -117,3 +122,6 @@ class NewspaperCreateView(generic.CreateView):
     success_url = reverse_lazy("agency:news-list")
 
 
+class NewspaperDeleteView(generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("agency:news-list")
