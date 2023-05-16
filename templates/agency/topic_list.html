@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-
   <section class="pt-3 pb-4" id="count-stats">
     <div class="container">
       <div class="row">
         <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
           <div class="row">
             <div class="col-md-12 position-relative">
+              <div>
+                {% block search_form %}
+                  {% include "includes/search_form.html" %}
+                {% endblock %}
+              </div>
               <div class="p-3 text-center">
-
                 <table class="table">
                     <tr class="text-dark">
                       <th>ID</th>
@@ -22,8 +25,8 @@
                           <tr class="text-center">
                             <td><a href="{% url 'agency:topics-detail' pk=topic.id %}">{{ topic.id }}</a></td>
                             <td><a href="{% url 'agency:topics-detail' pk=topic.id %}">{{ topic.name }}</a></td>
-                            <td><a href="#">Update</a></td>
-                            <td><a href="{% url 'agency:topic-delete' pk=topic.id%}">Delete</a></td>
+                            <td><a href="{% url 'agency:topic-update' pk=topic.id %}">Update</a></td>
+                            <td><a href="{% url 'agency:topic-delete' pk=topic.id %}">Delete</a></td>
                           </tr>
                     {% endfor %}
 
@@ -38,8 +41,8 @@
         </div>
       </div>
     </div>
-
   </section>
+
 {% endblock %}
 
 

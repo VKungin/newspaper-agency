@@ -21,6 +21,10 @@
               {% endif %}
             </div>
         </div>
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'agency:topic-update' pk=topic.id %}" class="btn btn-dark">Update name</a>
+          <a href="{% url 'agency:topic-delete' pk=topic.id %}" class="btn btn-danger">Delete</a>
+        </div>
       </div>
     </div>
   </div>

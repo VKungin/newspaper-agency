@@ -9,6 +9,11 @@
       <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
         <div class="row">
           <div class="col-md-12 position-relative">
+            <div>
+              {% block search_form %}
+                {% include "includes/search_form.html" %}
+              {% endblock %}
+            </div>
             <div class="p-3 text-center">
               <table class="table">
                   <tr class="text-dark">
