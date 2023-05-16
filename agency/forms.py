@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from agency.models import Redactor
+from agency.models import Redactor, Newspaper
 
 
 class RedactorCreateForm(UserCreationForm):
@@ -61,3 +61,9 @@ class RedactorSearchForm(forms.Form):
             "class": "rounded form-control bg-transparent"
         })
     )
+
+
+class ChangeRedactorForm(forms.ModelForm):
+    class Meta:
+        model = Newspaper
+        fields = []

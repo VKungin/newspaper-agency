@@ -2,44 +2,56 @@
 
 {% block content %}
 
-<section class="pt-1 pb-4" id="count-stats">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-2 blur shadow-blur">
-        <div class="row-cols-1">
-          <div class="col-md-11 position-relative">
-            <div class="p-3">
-            <h5 class="mt-3">{{ newspaper.content}} </h5>
-              <a
-                  href="{% url 'agency:topics-detail' pk=newspaper.topic.id %}"
-                  class="text-dark font-weight-bolder mb-lg-4 mb-3"
-              >
-                Topic: {{ newspaper.topic }}
-              </a><br>
+  <section class="pt-1 pb-4" id="count-stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-2 blur shadow-blur">
+          <div class="row-cols-1">
+            <div class="col-md-11 position-relative">
+              <div class="p-3">
+                <h5 class="mt-3">{{ newspaper.content}} </h5>
+                <a
+                    href="{% url 'agency:topics-detail' pk=newspaper.topic.id %}"
+                    class="text-dark font-weight-bolder mb-lg-4 mb-3"
+                >
+                  Topic: {{ newspaper.topic }}
+                </a><br>
 
-              {% if newspaper.redactors.all %}
+                {% if newspaper.redactors.all %}
 
-                {% for redactor in newspaper.redactors.all %}
-                <a href="{% url 'agency:redactors-detail' pk=redactor.id %}" class="text-dark font-weight-bolder
-                mb-lg-4
-                mb-3">Redactor:
-                  {{ redactor.username }}</a>
-                {% endfor %}
-              {% else %}
-                <p class="text-dark font-weight-bolder mb-lg-4 mb-3">No Redactors</p>
-              {% endif %}
+                  {% for redactor in newspaper.redactors.all %}
+                  <a href="{% url 'agency:redactors-detail' pk=redactor.id %}" class="text-dark font-weight-bolder
+                  mb-lg-4
+                  mb-3">Redactor:
+                    {{ redactor.username }}</a><br>
+                  {% endfor %}
+                {% else %}
+                  <p class="text-dark font-weight-bolder mb-lg-4 mb-3">No Redactors</p>
+                {% endif %}
+              </div>
             </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'agency:news-update' pk=newspaper.id %}" class="btn btn-dark">Update</a>
-            <a href="{% url 'agency:news-delete' pk=newspaper.id %}" class="btn btn-danger">Delete</a>
+
+            <div class="d-flex justify-content-between">
+              <div>
+                <a href="{% url 'agency:news-update' pk=newspaper.id %}" class="btn btn-dark">Update</a>
+                <a href="{% url 'agency:news-delete' pk=newspaper.id %}" class="btn btn-danger">Delete</a>
+              </div>
+
+              <div>
+                {% if newspaper in user.newspapers.all %}
+                  <a href="{% url 'agency:news-change-redactor' pk=newspaper.id %}" class="btn btn-secondary link-to-page">
+                    Delete me from this news
+                  </a>
+                {% else %}
+                  <a href="{% url 'agency:news-change-redactor' pk=newspaper.id %}" class="btn btn-success link-to-page">
+                    Assign me from this news
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
-
-
-</section>
+  </section>
 {% endblock %}
-
