@@ -14,23 +14,21 @@
               </div>
               <div class="p-3 text-center">
                 <table class="table">
-                    <tr class="text-dark">
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Update</th>
-                      <th>Delete</th>
+                  <tr class="text-dark">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                  </tr>
+
+                  {% for topic in topic_list %}
+                    <tr class="text-center">
+                      <td><a href="{% url 'agency:topics-detail' pk=topic.id %}">{{ topic.id }}</a></td>
+                      <td><a href="{% url 'agency:topics-detail' pk=topic.id %}">{{ topic.name }}</a></td>
+                      <td><a href="{% url 'agency:topic-update' pk=topic.id %}">Update</a></td>
+                      <td><a href="{% url 'agency:topic-delete' pk=topic.id %}">Delete</a></td>
                     </tr>
-
-                    {% for topic in topic_list %}
-                          <tr class="text-center">
-                            <td><a href="{% url 'agency:topics-detail' pk=topic.id %}">{{ topic.id }}</a></td>
-                            <td><a href="{% url 'agency:topics-detail' pk=topic.id %}">{{ topic.name }}</a></td>
-                            <td><a href="{% url 'agency:topic-update' pk=topic.id %}">Update</a></td>
-                            <td><a href="{% url 'agency:topic-delete' pk=topic.id %}">Delete</a></td>
-                          </tr>
-                    {% endfor %}
-
-
+                  {% endfor %}
                 </table>
               </div>
             </div>
@@ -42,7 +40,4 @@
       </div>
     </div>
   </section>
-
 {% endblock %}
-
-

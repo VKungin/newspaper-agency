@@ -27,19 +27,18 @@
                   <a href="{% url 'agency:news-detail' pk=new.id %}"> {{ new.title }} </a>
                   ({{ new.topic }}: {{ new.published_date }})<br>
                 {% endfor %}
-
               </h5>
+
             </div>
             <hr class="vertical dark">
+            </div>
           </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'agency:redactors-update' pk=redactor.id %}" class="btn btn-dark">Update</a>
-            <a href="{% url 'agency:redactors-delete' pk=redactor.id %}" class="btn btn-danger">Delete</a>
+          <div class="d-flex justify-content-center">
+              <a href="{% url 'agency:redactors-update' pk=redactor.id %}" class="btn btn-dark">Update</a>
+              <a href="{% url 'agency:redactors-delete' pk=redactor.id %}" class="btn btn-danger">Delete</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 {% endblock %}
