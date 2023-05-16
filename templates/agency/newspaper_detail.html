@@ -10,12 +10,20 @@
           <div class="col-md-11 position-relative">
             <div class="p-3">
             <h5 class="mt-3">{{ newspaper.content}} </h5>
-              <a href="#" class="text-dark font-weight-bolder mb-lg-4 mb-3">Topic: {{ newspaper.topic }}</a><br>
+              <a
+                  href="{% url 'agency:topics-detail' pk=newspaper.topic.id %}"
+                  class="text-dark font-weight-bolder mb-lg-4 mb-3"
+              >
+                Topic: {{ newspaper.topic }}
+              </a><br>
 
               {% if newspaper.redactors.all %}
 
                 {% for redactor in newspaper.redactors.all %}
-                <a href="#" class="text-dark font-weight-bolder mb-lg-4 mb-3">Redactor: {{ redactor.username }}</a>
+                <a href="{% url 'agency:redactors-detail' pk=redactor.id %}" class="text-dark font-weight-bolder
+                mb-lg-4
+                mb-3">Redactor:
+                  {{ redactor.username }}</a>
                 {% endfor %}
               {% else %}
                 <p class="text-dark font-weight-bolder mb-lg-4 mb-3">No Redactors</p>

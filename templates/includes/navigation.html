@@ -1,37 +1,60 @@
 
-  <!-- Navbar -->
-<div class="container position-sticky z-index-sticky top-0"><div class="row"><div class="col-12">
-<nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 mx-auto
-">
-  <div class="container">
-        <ul class="nav nav-pills-info justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link mb-1 px-1 py-2 active" data-bs-toggle="tab" href="{% url 'agency:index' %}" role="tab"
-             aria-controls="home" aria-selected="true">
-            Home
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mb-1 px-1 py-2 active" data-bs-toggle="tab" href="{% url 'agency:topics-list' %}" role="tab"
-             aria-controls="topics" aria-selected="true">
-            Topics
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mb-1 px-1 py-2 active" data-bs-toggle="tab" href="{% url 'agency:redactors-list' %}" role="tab"
-             aria-controls="redactors" aria-selected="true">
-            Redactors
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mb-1 px-1 py-2 active" data-bs-toggle="tab" href="{% url 'agency:news-list' %}" role="tab"
-             aria-controls="newspaper" aria-selected="true">
-            Newspaper
-          </a>
-        </li>
-      </ul>
+
+<div class="container position-sticky z-index-sticky top-0">
+  <div class="row">
+    <div class="col-12">
+      <nav class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 mx-auto">
+        <ul class="nav nav-pills-info justify-content-center ">
+          {% if user.is_authenticated %}
+          <li class="nav-item d-inline-block">
+            <a class="nav-link mb-1 px-1 py-2" data-bs-toggle="tab" href="{{ user.get_absolute_url }}"
+               role="tab"
+               aria-controls="user" aria-selected="true">
+              {{ user.get_username }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mb-1 px-1 py-2" data-bs-toggle="tab" href="{% url 'logout'%}?next={{request.path}}" role="tab"
+               aria-controls="logout" aria-selected="true">
+              Logout
+            </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link mb-1 px-1 py-2" data-bs-toggle="tab" href="{% url 'login'%}?next={{request.path}}" role="tab"
+               aria-controls="login" aria-selected="true">
+              Login
+            </a>
+          </li>
+        {% endif %}
+          <li class="nav-item">
+            <a class="nav-link mb-1 px-1 py-2" data-bs-toggle="tab" href="{% url 'agency:index' %}" role="tab"
+               aria-controls="home" aria-selected="true">
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mb-1 px-1 py-2" data-bs-toggle="tab" href="{% url 'agency:topics-list' %}" role="tab"
+               aria-controls="topics" aria-selected="true">
+              Topics
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mb-1 px-1 py-2" data-bs-toggle="tab" href="{% url 'agency:redactors-list' %}" role="tab"
+               aria-controls="redactors" aria-selected="true">
+              Redactors
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mb-1 px-1 py-2" data-bs-toggle="tab" href="{% url 'agency:news-list' %}" role="tab"
+               aria-controls="newspaper" aria-selected="true">
+              Newspaper
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
-</nav>
-<!-- End Navbar -->
-</div></div></div>
+</div>
+
 

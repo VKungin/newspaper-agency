@@ -20,7 +20,7 @@
                     <th>ID</th>
                     <th>Title</th>
                     <th>Published</th>
-                    <th>Read detail</th>
+                    <th>Detail</th>
                   </tr>
 
                   {% for news in newspaper_list %}
@@ -35,7 +35,7 @@
                             <a href="{% url 'agency:news-detail' pk=news.id %}">{{ news.published_date }}</a>
                           </td>
                           <td>
-                            <a href="{% url 'agency:news-detail' pk=news.id %}">Read detail</a>
+                            <a href="{% url 'agency:news-detail' pk=news.id %}">Read more</a>
                           </td>
                         </tr>
                   {% endfor %}
