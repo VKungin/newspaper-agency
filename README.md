@@ -6,7 +6,7 @@
 
 [Newspaper agency project deployed to Render](https://newspaper-agency-er0f.onrender.com/)
 
-user: gueest
+user: guest
 
 password: 1234qazw
 ## Features
