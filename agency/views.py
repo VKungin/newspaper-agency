@@ -62,7 +62,7 @@ class TopicDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         name = context.get("topic")
-        context["large_welcome_text"] = name
+        context["large_welcome_text"] = f"Topic: {name}"
         return context
 
 
@@ -116,7 +116,7 @@ class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         username = context.get("redactor")
-        context["large_welcome_text"] = username
+        context["large_welcome_text"] = f"Redactor: {username}"
         return context
 
 
@@ -166,7 +166,7 @@ class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         title = context.get("newspaper")
-        context["large_welcome_text"] = title
+        context["large_welcome_text"] = f"News: {title}"
         return context
 
 
@@ -189,8 +189,9 @@ class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("agency:news-list")
 
 
-class UpdateReactorInNewspaperView(LoginRequiredMixin, generic.UpdateView):
+class UpdateRedactorInNewspaperView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
+    fields = "__all__"
 
     def post(self, request, pk):
         user = request.user
@@ -199,6 +200,3 @@ class UpdateReactorInNewspaperView(LoginRequiredMixin, generic.UpdateView):
         else:
             user.newspapers.add(pk)
         return redirect("agency:news-detail", pk=pk)
-
-    def get(self, request, *args, **kwargs):
-        return self.post(request, *args, **kwargs)

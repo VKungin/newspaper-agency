@@ -39,13 +39,19 @@
 
               <div>
                 {% if newspaper in user.newspapers.all %}
-                  <a href="{% url 'agency:news-change-redactor' pk=newspaper.id %}" class="btn btn-secondary link-to-page">
-                    Delete me from this news
-                  </a>
+                  <form action="{% url 'agency:news-change-redactor' pk=newspaper.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="text-center">
+                      <input type="submit" value="Delete me from this news" class="btn btn-secondary">
+                    </div>
+                  </form>
                 {% else %}
-                  <a href="{% url 'agency:news-change-redactor' pk=newspaper.id %}" class="btn btn-success link-to-page">
-                    Assign me from this news
-                  </a>
+                  <form action="{% url 'agency:news-change-redactor' pk=newspaper.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="text-center">
+                      <input type="submit" value="Assign me from this news" class="btn btn-success">
+                    </div>
+                  </form>
                 {% endif %}
               </div>
             </div>
