@@ -22,6 +22,10 @@
             <input type="submit" value="Login" class="btn btn-transparent" />
             <input type="hidden" name="next" value="{{ next }}" />
           </form>
+
+          <div class="d-flex justify-content-evenly">
+            <a href="{% url 'agency:redactors-create' %}" class="btn btn-transparent">Create new redactor</a>
+          </div>
         </div>
       </div>
     </div>

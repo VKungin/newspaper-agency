@@ -120,7 +120,7 @@ class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
         return context
 
 
-class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
+class RedactorCreateView(generic.CreateView):
     model = Redactor
     form_class = RedactorCreateForm
 
