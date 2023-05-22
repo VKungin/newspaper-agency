@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from agency.models import Redactor, Newspaper
+from agency.models import Redactor
 
 
 class RedactorCreateForm(UserCreationForm):
@@ -59,9 +59,3 @@ class RedactorSearchForm(forms.Form):
             "class": "rounded form-control bg-transparent"
         })
     )
-
-
-class ChangeRedactorForm(forms.ModelForm):
-    class Meta:
-        model = Newspaper
-        fields = []

@@ -6,8 +6,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from agency.forms import (
     RedactorCreateForm, RedactorUpdateForm,
-    ChangeRedactorForm, RedactorSearchForm,
-    TopicSearchForm, NewspaperSearchForm
+    RedactorSearchForm, TopicSearchForm,
+    NewspaperSearchForm,
 )
 from agency.models import Topic, Newspaper, Redactor
 
@@ -191,7 +191,6 @@ class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class UpdateReactorInNewspaperView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
-    form_class = ChangeRedactorForm
 
     def post(self, request, pk):
         user = request.user
