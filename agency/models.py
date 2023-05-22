@@ -21,9 +21,6 @@ class Redactor(AbstractUser):
         verbose_name = "Redactor"
         verbose_name_plural = "Redactors"
 
-    def __str__(self):
-        return f"{self.username}"
-
     def get_absolute_url(self):
         return reverse("agency:redactors-detail", kwargs={"pk": self.pk})
 
