@@ -7,7 +7,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
     class Meta:
-        ordering = ["id"]
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
@@ -17,7 +17,7 @@ class Redactor(AbstractUser):
     years_of_experience = models.IntegerField(default=0, blank=True, null=True)
 
     class Meta:
-        ordering = ["id"]
+        ordering = ["-date_joined"]
         verbose_name = "Redactor"
         verbose_name_plural = "Redactors"
 
@@ -33,6 +33,6 @@ class Newspaper(models.Model):
     redactors = models.ManyToManyField(Redactor, related_name="newspapers")
 
     class Meta:
-        ordering = ["published_date"]
+        ordering = ["-published_date"]
     def __str__(self):
         return self.title
